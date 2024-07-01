@@ -1,44 +1,44 @@
-#include "Coordinates.h"
+#include "TextCoordinates.h"
 #include <cassert>
 
-Coordinates::Coordinates() {
+TextCoordinates::TextCoordinates() {
 }
-Coordinates::Coordinates(int line, int column)
+TextCoordinates::TextCoordinates(int line, int column)
     : line(line), column(column) {
     assert(line >= 0);
     assert(column >= 0);
 }
 
-bool Coordinates::operator==(const Coordinates& c) const {
+bool TextCoordinates::operator==(const TextCoordinates& c) const {
     return line == c.line && column == c.column;
 }
 
-bool Coordinates::operator!=(const Coordinates& c) const {
+bool TextCoordinates::operator!=(const TextCoordinates& c) const {
     return line != c.line || column != c.column;
 }
 
-bool Coordinates::operator>(const Coordinates& c) const {
+bool TextCoordinates::operator>(const TextCoordinates& c) const {
     if (line != c.line) {
         return line > c.line;
     }
     return column > c.column;
 }
 
-bool Coordinates::operator<(const Coordinates& c) const {
+bool TextCoordinates::operator<(const TextCoordinates& c) const {
     if (line != c.line) {
         return line < c.line;
     }
     return column < c.column;
 }
 
-bool Coordinates::operator>=(const Coordinates& c) const {
+bool TextCoordinates::operator>=(const TextCoordinates& c) const {
     if (line != c.line) {
         return line > c.line;
     }
     return column >= c.column;
 }
 
-bool Coordinates::operator<=(const Coordinates& c) const {
+bool TextCoordinates::operator<=(const TextCoordinates& c) const {
     if (line != c.line) {
         return line < c.line;
     }

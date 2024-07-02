@@ -2,7 +2,18 @@
 #define TEXT_EDIT_TYPEDEFS_H
 #include <utility>
 
-typedef std::pair<float, float> Coordinates;
+/**
+ * The location of the top right corner of an object.
+ * \param first x coordinate
+ * \param second y coordinate
+ */
+typedef std::pair<int, int> Coordinates;
+
+/**
+ * The dimensions of an object
+ * \param first Object width
+ * \param second Object height
+ */
 typedef std::pair<float, float> Dimensions;
 
 #endif

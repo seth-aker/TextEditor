@@ -6,6 +6,7 @@ TextEditor::TextEditor() {};
 
 void TextEditor::init(SDL_Renderer* renderer) {
     m_renderer = renderer;
+
 }
 
 void TextEditor::handleEvents(SDL_Event* event) {
@@ -25,13 +26,30 @@ void TextEditor::handleEvents(SDL_Event* event) {
         //Handle Text input. Input text accessed from event->text.text
     case SDL_TEXTINPUT:
         break;
-    case SDL_MOUSEBUTTONUP:
-        break;
+    case SDL_MOUSEMOTION:
     case SDL_MOUSEBUTTONDOWN:
+    case SDL_MOUSEBUTTONUP:
+    case SDL_MOUSEWHEEL:
+        handleMouseEvents(event);
+        break;
+    default:
+        break;
+    }
+
+
+}
+
+void TextEditor::handleMouseEvents(SDL_Event* event) {
+    // Sets mouse location.
+    SDL_GetMouseState(&mouseLocation.first, &mouseLocation.second);
+    switch (event->type) {
+    case SDL_MOUSEBUTTONDOWN:
+        break;
+    case SDL_MOUSEBUTTONUP:
         break;
     case SDL_MOUSEWHEEL:
 
-    default:
+        scrollAmountY = event->wheel.y;
         break;
     }
 

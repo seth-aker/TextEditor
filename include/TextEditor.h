@@ -1,5 +1,6 @@
 #ifndef TEXT_EDITOR_H
 #define TEXT_EDITOR_H
+#include "Typedefs.h"
 #include "ScrollBar.h"
 #include <SDL2/SDL.h>
 
@@ -7,6 +8,11 @@ class TextEditor {
 private:
     SDL_Renderer* m_renderer = nullptr;
     ScrollBar m_scrollbar;
+    int scrollAmountY{ 0 };
+    Coordinates mouseLocation{ 0.0, 0.0 };
+    bool lMouseClicked{ false };
+    void handleMouseEvents(SDL_Event* event);
+
 
 
 public:

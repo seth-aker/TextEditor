@@ -10,26 +10,18 @@ template <typename T>
 class Pressable {
 private:
     T m_pressableObj;
-    Coordinates objCoordinates;
-    Dimensions dimensions;
+    Coordinates m_objCoordinates;
+    Dimensions m_objDimensions;
     std::function<void()> m_onPress;
 
 public:
-    Pressable() {
-        m_pressableObj{};
-
-        m_onPress = NULL;
-    };
-    Pressable(T pressableObj)
-        : m_pressableObj{ pressableObj }
-    {
-        m_onPress = NULL:
-    }
-    Pressable(T pressableObj, std::function<void()> onPress)
+    Pressable(T pressableObj, Coordinates objCoord, Dimensions objDim, std::function<void()> onPress)
         : m_pressableObj{ pressableObj },
-
-        m_onPress{ onPress }
+        m_objCoordinates{ objCoord },
+        m_objDimensions{ objDim }
+        m_onPress{ onPress },
     {};
+
 
     void setOnPress(std::function<void()> onPress) {
         m_onPress = onPress;
@@ -43,9 +35,28 @@ public:
         return m_pressableObj;
     }
     // Returns true if mouse is pressed and intersects with the pressable obj.
-    bool isPressed(Coordinates& mousePos, bool mousePressed) {
-        if (intersects(mousePos.first, mousePos.second)
+    const bool isPressed(Coordinates& mousePos, bool mousePressed) const {
+        return (mousePressed &&
+            intersects(mousePos.first, mousePos.second, // mouse location
+                m_objCoordinates.first, m_objCoordinates.second, // object location
+                m_objDimensions.first, m_objDimensions.second));    // object dimensions
     }
+
+    void setCoordinates(Coordinates coord) {
+        m_objCoordinates = coord;
+    }
+
+    const Coordinates& getCoordinates() const {
+        return m_objCoordinates;
+    }
+    void setDimensions(Dimensions dim) {
+        m_objDimensions = dim;
+    }
+
+    const Dimensions& getDimensions() const {
+        return m_objDimensions;
+    }
+
 
 };
 

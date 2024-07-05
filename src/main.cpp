@@ -55,8 +55,8 @@ int main(int argc, char* argv[]) {
     SDL_ShowCursor(SDL_ENABLE);
 
     // Set up the text editor here
-    TextEditor textEdit(renderer);
-    textEdit.init(renderer);
+    auto textEdit = std::make_unique<TextEditor>();
+    textEdit->init(renderer);
 
 
     // SDL_Event event;

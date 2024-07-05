@@ -1,12 +1,20 @@
 #include "include/TextEditor.h"
 #include "include/Pressable.h"
+#include "include/FontLoader.h"
 #include <SDL2/SDL.h>
+#include <iostream>
 
-TextEditor::TextEditor(SDL_Renderer* renderer) : m_renderer{ renderer } {
+TextEditor::TextEditor() {
 };
 
 void TextEditor::init(SDL_Renderer* renderer) {
     m_renderer = renderer;
+
+    fontLoader.loadFonts(FONTS_DIR_PATH);
+    for (Font each : fontLoader.getFonts()) {
+        std::cout << each.fontName << "\n";
+    }
+
 }
 
 void TextEditor::handleEvents(SDL_Event* event) {

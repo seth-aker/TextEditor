@@ -2,11 +2,13 @@
 #define TEXT_EDITOR_H
 #include "Typedefs.h"
 #include "ScrollBar.h"
+#include "FontLoader.h"
 #include <SDL2/SDL.h>
 
 class TextEditor {
 private:
     SDL_Renderer* m_renderer = nullptr;
+    FontLoader fontLoader{};
     //ScrollBar m_scrollbar;
     int scrollAmountY{ 0 };
     Coordinates mouseLocation{ 0.0, 0.0 };
@@ -17,7 +19,7 @@ private:
 
 
 public:
-    TextEditor(SDL_Renderer* renderer);
+    TextEditor();
     void init(SDL_Renderer* renderer);
     void handleEvents(SDL_Event* event);
     void render();

@@ -7,7 +7,7 @@
 #include <filesystem>
 
 
-static const std::string FONTS_DIR_PATH{ "C:\\Users\\14807\\workspace\\cpp\\TextEditor\\fonts" };
+static const std::filesystem::path FONTS_DIR_PATH{ "C:\\Users\\14807\\workspace\\cpp\\TextEditor\\fonts" };
 
 class FontLoader {
 private:
@@ -15,8 +15,9 @@ private:
     FontType detectType(const std::string_view fontText) const;
     std::string getFontName(const std::string_view fontText) const;
 public:
-    bool loadFonts(std::filesystem::path& dirPath);
+    bool loadFonts(const std::filesystem::path& dirPath);
     FontLoader();
+    std::vector<Font> getFonts();
 };
 
 

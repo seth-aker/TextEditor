@@ -7,16 +7,20 @@
 
 FontLoader::FontLoader() {};
 
-bool FontLoader::loadFonts(std::filesystem::path& dirPath) {
+bool FontLoader::loadFonts(const std::filesystem::path& dirPath) {
     fonts.reserve(36);
     for (const auto& entry : std::filesystem::recursive_directory_iterator(dirPath)) {
         if (entry.path().has_extension() && entry.path().extension().generic_string() == std::string{ ".ttf" }) {
-            std::string_view fileText = entry.path().filename().generic_string();
+            std::string fileText = entry.path().filename().generic_string();
             fonts.push_back(Font{ detectType(fileText), getFontName(fileText), entry.path().generic_string() });
         }
 
     }
     return true;
+}
+
+std::vector<Font> FontLoader::getFonts() {
+    return fonts;
 }
 
 FontType FontLoader::detectType(const std::string_view fontText) const {

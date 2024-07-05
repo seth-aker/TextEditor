@@ -7,16 +7,17 @@
 class TextEditor {
 private:
     SDL_Renderer* m_renderer = nullptr;
-    ScrollBar m_scrollbar;
+    //ScrollBar m_scrollbar;
     int scrollAmountY{ 0 };
     Coordinates mouseLocation{ 0.0, 0.0 };
     bool lMouseClicked{ false };
+
     void handleMouseEvents(SDL_Event* event);
 
 
 
 public:
-    TextEditor();
+    TextEditor(SDL_Renderer* renderer);
     void init(SDL_Renderer* renderer);
     void handleEvents(SDL_Event* event);
     void render();

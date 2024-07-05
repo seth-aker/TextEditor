@@ -18,8 +18,8 @@ public:
     Pressable(T pressableObj, Coordinates objCoord, Dimensions objDim, std::function<void()> onPress)
         : m_pressableObj{ pressableObj },
         m_objCoordinates{ objCoord },
-        m_objDimensions{ objDim }
-        m_onPress{ onPress },
+        m_objDimensions{ objDim },
+        m_onPress{ onPress }
     {};
 
 

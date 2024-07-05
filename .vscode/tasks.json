@@ -7,9 +7,14 @@
       "args": [
         "-fdiagnostics-color=always",
         "-g",
+        "src/**",
         "${file}",
         "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "-lmingw32",
+        "-lSDL2main",
+        "-lSDL2",
+        "-lSDL2_ttf"
       ],
       "options": {},
       "problemMatcher": ["$gcc"],

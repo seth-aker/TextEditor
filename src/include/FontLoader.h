@@ -12,7 +12,8 @@ static const std::string FONTS_DIR_PATH{ "C:\\Users\\14807\\workspace\\cpp\\Text
 class FontLoader {
 private:
     std::vector<Font> fonts{};
-    FontType detectType(const std::string_view) const;
+    FontType detectType(const std::string_view fontText) const;
+    std::string getFontName(const std::string_view fontText) const;
 public:
     bool loadFonts(std::filesystem::path& dirPath);
     FontLoader();

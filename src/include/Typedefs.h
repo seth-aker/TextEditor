@@ -14,6 +14,6 @@ typedef std::pair<int, int> Coordinates;
  * \param first Object width
  * \param second Object height
  */
-typedef std::pair<float, float> Dimensions;
+typedef std::pair<int, int> Dimensions;
 
 #endif

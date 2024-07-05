@@ -1,4 +1,4 @@
-#include "TextCoordinates.h"
+#include "../include/TextCoordinates.h"
 #include <cassert>
 
 TextCoordinates::TextCoordinates() {

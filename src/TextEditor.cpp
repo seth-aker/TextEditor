@@ -1,12 +1,12 @@
-#include "TextEditor.h"
-#include "Pressable.h"
+#include "include/TextEditor.h"
+#include "include/Pressable.h"
 #include <SDL2/SDL.h>
 
-TextEditor::TextEditor() {};
+TextEditor::TextEditor(SDL_Renderer* renderer) : m_renderer{ renderer } {
+};
 
 void TextEditor::init(SDL_Renderer* renderer) {
     m_renderer = renderer;
-
 }
 
 void TextEditor::handleEvents(SDL_Event* event) {

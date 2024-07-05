@@ -1,5 +1,6 @@
 #ifndef UTILITY_FONT_H
 #define UTILITY_FONT_H
+#include <SDL2/SDL_ttf.h>
 #include <string>
 enum FontType {
     REGULAR,
@@ -8,6 +9,7 @@ enum FontType {
     BOLDITALIC
 };
 struct Font {
+    TTF_Font* ttfFont = nullptr;
     const FontType fontType;
     const std::string fontName;
     const std::string filePath;

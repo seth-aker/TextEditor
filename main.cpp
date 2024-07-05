@@ -1,4 +1,4 @@
-#include "include/TextEditor.h"
+#include "src/TextEditor.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -59,28 +59,28 @@ int main(int argc, char* argv[]) {
     textEdit->init(renderer);
 
 
-    // SDL_Event event;
-    // while (!exitProg) {
-    //     //Register occurring events
-    //     while (SDL_PollEvent(&event)) {
-    //         switch (event.type)
-    //         {
-    //         case SDL_QUIT:
-    //             exitProg = true;
-    //             break;
-    //         default:
-    //             textEdit->handleEvents(&event);
-    //             break;
-    //         }
-    //     }
-    //     // Background white
-    //     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    //     SDL_RenderClear(renderer);
+    SDL_Event event;
+    while (!exitProg) {
+        //Register occurring events
+        while (SDL_PollEvent(&event)) {
+            switch (event.type)
+            {
+            case SDL_QUIT:
+                exitProg = true;
+                break;
+            default:
+                textEdit->handleEvents(&event);
+                break;
+            }
+        }
+        // Background white
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderClear(renderer);
 
-    //     textEdit->render();
+        textEdit->render();
 
 
-    // }
+    }
 
     // Cleanup
     if (cursorInput)

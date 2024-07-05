@@ -1,6 +1,6 @@
-#include "include/TextEditor.h"
-#include "include/Pressable.h"
-#include "include/FontLoader.h"
+#include "TextEditor.h"
+#include "Pressable.h"
+#include "FontLoader.h"
 #include <SDL2/SDL.h>
 #include <iostream>
 
@@ -9,11 +9,10 @@ TextEditor::TextEditor() {
 
 void TextEditor::init(SDL_Renderer* renderer) {
     m_renderer = renderer;
-
     fontLoader.loadFonts(FONTS_DIR_PATH);
-    for (Font each : fontLoader.getFonts()) {
-        std::cout << each.fontName << "\n";
-    }
+}
+
+void TextEditor::render() {
 
 }
 
@@ -56,7 +55,6 @@ void TextEditor::handleMouseEvents(SDL_Event* event) {
     case SDL_MOUSEBUTTONUP:
         break;
     case SDL_MOUSEWHEEL:
-
         scrollAmountY = event->wheel.y;
         break;
     }

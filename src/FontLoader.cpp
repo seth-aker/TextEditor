@@ -1,5 +1,5 @@
-#include "../include/FontLoader.h"
-#include "../include/Font.h"
+#include "FontLoader.h"
+#include "Font.h"
 #include <vector>
 #include <string>
 #include <filesystem>

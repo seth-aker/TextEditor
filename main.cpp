@@ -5,6 +5,7 @@
 #include <memory>
 #include <crtdbg.h>
 #include <iostream>
+#include <fstream>
 
 #ifndef WINDOW_HEIGHT
 #   define WINDOW_HEIGHT 480
@@ -34,7 +35,7 @@ int main(int argc, char* argv[]) {
     SDL_Window* window = SDL_CreateWindow("A Text Editor",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         WINDOW_WIDTH, WINDOW_HEIGHT,
-        SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
+        SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
     if (!window) {
         std::cerr << "Error creating window: " << SDL_GetError();
         exitProg = true;
@@ -55,8 +56,8 @@ int main(int argc, char* argv[]) {
     SDL_ShowCursor(SDL_ENABLE);
 
     // Set up the text editor here
-    auto textEdit = std::make_unique<TextEditor>();
-    textEdit->init(renderer);
+    TextEditor textEdit{};
+    textEdit.init(renderer);
 
 
     SDL_Event event;
@@ -69,7 +70,7 @@ int main(int argc, char* argv[]) {
                 exitProg = true;
                 break;
             default:
-                textEdit->handleEvents(&event);
+                textEdit.handleEvents(&event);
                 break;
             }
         }
@@ -77,11 +78,9 @@ int main(int argc, char* argv[]) {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
-        textEdit->render();
-
+        textEdit.render();
 
     }
-
     // Cleanup
     if (cursorInput)
         SDL_FreeCursor(cursorInput);

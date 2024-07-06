@@ -15,7 +15,7 @@ struct Font {
     const std::string filePath;
     int fontSize;
     Font(FontType _fontType, std::string name, std::string path, int fontSize = 11);
-
+    ~Font();
 };
 
 #endif /* UTILITY_FONT_H */

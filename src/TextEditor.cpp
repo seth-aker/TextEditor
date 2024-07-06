@@ -1,3 +1,4 @@
+#include "TextFileLoader/BasicTextLoader.h"
 #include "TextEditor.h"
 #include "Pressable.h"
 #include "FontLoader.h"
@@ -5,15 +6,30 @@
 #include <iostream>
 
 TextEditor::TextEditor() {
+    m_textLoader = std::make_unique<BasicTextLoader>();
 };
+
+void TextEditor::setDocFilePath(const std::string& path) {
+    docFilePath = path;
+}
+
+bool TextEditor::saveDocument() {
+    if (docFilePath.empty()) {
+        std::cerr << "Error: No file path selected";
+        return false;
+    }
+    return m_textLoader->saveFile(rawText, docFilePath);
+
+}
 
 void TextEditor::init(SDL_Renderer* renderer) {
     m_renderer = renderer;
-    fontLoader.loadFonts(FONTS_DIR_PATH);
+    m_fontLoader.loadFonts(FONTS_DIR_PATH);
 }
 
 void TextEditor::render() {
-
+    SDL_RenderPresent(m_renderer);
+    SDL_Delay(10);
 }
 
 void TextEditor::handleEvents(SDL_Event* event) {
@@ -51,6 +67,7 @@ void TextEditor::handleMouseEvents(SDL_Event* event) {
     SDL_GetMouseState(&mouseLocation.first, &mouseLocation.second);
     switch (event->type) {
     case SDL_MOUSEBUTTONDOWN:
+        saveDocument();
         break;
     case SDL_MOUSEBUTTONUP:
         break;

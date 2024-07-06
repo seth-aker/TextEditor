@@ -22,7 +22,7 @@ std::string BasicTextLoader::getFile(std::string& filePath) {
 }
 
 bool BasicTextLoader::saveFile(const std::string& data, const std::string& filePath) {
-    std::ofstream io{ "Test.txt" };
+    std::ofstream io{ filePath };
     io << data.c_str();
     if (io.bad()) {
         std::cerr << "An error occurred while writing to the file!";

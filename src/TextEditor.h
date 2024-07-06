@@ -12,6 +12,7 @@
 #include <string>
 #include <memory>
 
+const std::string DOCUMENTS_LOCATION{ "C:\\Users\\14807\\workspace\\cpp\\TextEditor\\documents\\" };
 class TextEditor {
 private:
     SDL_Renderer* m_renderer = nullptr;
@@ -23,7 +24,7 @@ private:
     Coordinates mouseLocation{ 0.0, 0.0 };
     bool lMouseClicked{ false };
     std::string rawText{ "This is a raw text document" };
-    std::string docFilePath{ "Default.txt" };
+    std::string docName{ "default.txt" };
 
     void handleMouseEvents(SDL_Event* event);
     void setDocFilePath(const std::string& path);

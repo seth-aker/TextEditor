@@ -10,15 +10,15 @@ TextEditor::TextEditor() {
 };
 
 void TextEditor::setDocFilePath(const std::string& path) {
-    docFilePath = path;
+    docName = path;
 }
 
 bool TextEditor::saveDocument() {
-    if (docFilePath.empty()) {
+    if (docName.empty()) {
         std::cerr << "Error: No file path selected";
         return false;
     }
-    return m_textLoader->saveFile(rawText, docFilePath);
+    return m_textLoader->saveFile(rawText, DOCUMENTS_LOCATION + docName);
 
 }
 
